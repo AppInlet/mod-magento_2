@@ -2,15 +2,6 @@
 
 namespace Payfast\Payfast\Controller\Notify;
 
-/**
- * Copyright (c) 2024 Payfast (Pty) Ltd
- * You (being anyone who is not Payfast (Pty) Ltd) may download and use this plugin / code in your own website
- * in conjunction with a registered and active Payfast account. If your Payfast account is terminated for any reason,
- * you may not use this plugin / code or part thereof.
- * Except as expressly indicated in this licence, you may not use, copy, modify or distribute this plugin / code or
- * part thereof in any way.
- */
-
 use Exception;
 use LogicException;
 use Magento\Framework\App\Action\HttpPostActionInterface;
@@ -27,11 +18,8 @@ use Payfast\Payfast\Controller\AbstractPayfast;
 use Payfast\Payfast\Model\Config as PayfastConfig;
 use Payfast\Payfast\Model\Info;
 use Magento\Framework\Controller\ResultFactory;
-use Payfast\PayfastCommon\PayfastCommon;
+use Payfast\PayfastCommon\Aggregator\Request\PaymentRequest;
 
-/**
- * Index class
- */
 class Index extends AbstractPayfast implements CsrfAwareActionInterface, HttpPostActionInterface
 {
 
@@ -42,14 +30,14 @@ class Index extends AbstractPayfast implements CsrfAwareActionInterface, HttpPos
      */
     public function execute(): ResultInterface
     {
-        $debugMode = $this->getConfigData('debug');
-        $payfastCommon = new PayfastCommon((bool)$debugMode);
+        $debugMode      = $this->getConfigData('debug');
+        $paymentRequest = new PaymentRequest((bool)$debugMode);
 
         $moduleInfo = [
-            'pfSoftwareName' => 'Magento',
-            'pfSoftwareVer' => '2.4.7',
+            'pfSoftwareName'       => 'Magento',
+            'pfSoftwareVer'        => '2.4.7',
             'pfSoftwareModuleName' => 'Payfast-Magento',
-            'pfModuleVer' => '2.6.0'
+            'pfModuleVer'          => '2.7.0'
         ];
 
         $this->_logger->debug('Notify: ' . json_encode($this->request->getPostValue()));
@@ -65,9 +53,9 @@ class Index extends AbstractPayfast implements CsrfAwareActionInterface, HttpPos
 
         $pfHost = $this->paymentMethod->getPayfastHost($serverMode);
 
-        $payfastCommon->pflog(' Payfast ITN call received');
+        $paymentRequest->pflog(' Payfast ITN call received');
 
-        $payfastCommon->pflog('Server = ' . $pfHost);
+        $paymentRequest->pflog('Server = ' . $pfHost);
 
         //// Notify Payfast that information has been received
         $resultRaw = $this->resultFactory->create(ResultFactory::TYPE_RAW);
@@ -87,58 +75,58 @@ class Index extends AbstractPayfast implements CsrfAwareActionInterface, HttpPos
 
         //// Get data sent by Payfast
         // Posted variables from ITN
-        $pfData = PayfastCommon::pfGetData();
+        $pfData = $paymentRequest->pfGetData();
 
         if (empty($pfData)) {
             $pfError  = true;
-            $pfErrMsg = PayfastCommon::PF_ERR_BAD_ACCESS;
+            $pfErrMsg = $paymentRequest::PF_ERR_BAD_ACCESS;
         }
 
         //// Verify security signature
         if (!$pfError) {
-            $payfastCommon->pflog('Verify security signature');
+            $paymentRequest->pflog('Verify security signature');
 
             // If signature different, log for debugging
-            if (!$payfastCommon->pfValidSignature(
+            if (!$paymentRequest->pfValidSignature(
                 $pfData,
                 $pfParamString,
                 $passPhrase
             )) {
                 $pfError  = true;
-                $pfErrMsg = PayfastCommon::PF_ERR_INVALID_SIGNATURE;
+                $pfErrMsg = $paymentRequest::PF_ERR_INVALID_SIGNATURE;
             }
         }
 
         //// Get internal order and verify it hasn't already been processed
         if (!$pfError) {
-            $payfastCommon->pflog("Check order hasn't been processed");
+            $paymentRequest->pflog("Check order hasn't been processed");
 
             // Load order
             $orderId = $pfData[Info::M_PAYMENT_ID];
 
             $this->_order = $this->orderFactory->create()->loadByIncrementId($orderId);
 
-            $payfastCommon->pflog('order status is : ' . $this->_order->getStatus());
+            $paymentRequest->pflog('order status is : ' . $this->_order->getStatus());
 
             // Check order is in "pending payment" state
             if ($this->_order->getState() !== Order::STATE_PENDING_PAYMENT) {
-                $pfErrMsg = PayfastCommon::PF_ERR_ORDER_PROCESSED;
+                $pfErrMsg = $paymentRequest::PF_ERR_ORDER_PROCESSED;
             }
         }
 
         //// Verify data received
         if (!$pfError) {
-            $payfastCommon->pflog('Verify data received');
+            $paymentRequest->pflog('Verify data received');
 
-            if (!$payfastCommon->pfValidData($moduleInfo, $pfHost, $pfParamString)) {
+            if (!$paymentRequest->pfValidData($moduleInfo, $pfHost, $pfParamString)) {
                 $pfError  = true;
-                $pfErrMsg = PayfastCommon::PF_ERR_BAD_ACCESS;
+                $pfErrMsg = $paymentRequest::PF_ERR_BAD_ACCESS;
             }
         }
 
         //// Check status and update order
         if (!$pfError) {
-            $payfastCommon->pflog('Check status and update order');
+            $paymentRequest->pflog('Check status and update order');
 
             // Successful
             if ($pfData[Info::PAYMENT_STATUS] === 'COMPLETE') {
@@ -155,7 +143,7 @@ class Index extends AbstractPayfast implements CsrfAwareActionInterface, HttpPos
 
         // If an error occurred
         if ($pfError) {
-            $payfastCommon->pflog('Error occurred: ' . $pfErrMsg);
+            $paymentRequest->pflog('Error occurred: ' . $pfErrMsg);
             $this->_logger->critical($pre . 'Error occured : ' . $pfErrMsg);
 
             return $this->rawResult
@@ -278,11 +266,11 @@ class Index extends AbstractPayfast implements CsrfAwareActionInterface, HttpPos
      */
     private function setPaymentAdditionalInformation(array $pfData): void
     {
-        $debugMode = $this->getConfigData('debug');
-        $payfastCommon = new PayfastCommon((bool)$debugMode);
+        $debugMode      = $this->getConfigData('debug');
+        $paymentRequest = new PaymentRequest((bool)$debugMode);
 
-        $payfastCommon->pflog(__METHOD__ . ' : bof');
-        $payfastCommon->pflog('Order complete');
+        $paymentRequest->pflog(__METHOD__ . ' : bof');
+        $paymentRequest->pflog('Order complete');
 
         try {
             // Update order additional payment information

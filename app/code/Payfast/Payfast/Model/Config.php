@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2024 Payfast (Pty) Ltd
+ * Copyright (c) 2025 Payfast (Pty) Ltd
  */
 
 namespace Payfast\Payfast\Model;
@@ -151,7 +151,7 @@ class Config extends AbstractConfig
      *
      * @return bool
      */
-    public function isMethodAvailable(string $methodCode = null): bool
+    public function isMethodAvailable(?string $methodCode = null): bool
     {
         // This method override is kept for potential future modifications
         // or to maintain consistency in method signatures.
@@ -185,7 +185,7 @@ class Config extends AbstractConfig
      *
      * @return bool
      */
-    public function isMethodSupportedForCountry(string $method = null, string $countryCode = null): bool
+    public function isMethodSupportedForCountry(?string $method = null, ?string $countryCode = null): bool
     {
         // Call the parent method if it exists
         $isParentSupported = parent::isMethodSupportedForCountry($method, $countryCode);
@@ -209,7 +209,7 @@ class Config extends AbstractConfig
      *
      * @return array
      */
-    public function getCountryMethods(string $countryCode = null): array
+    public function getCountryMethods(?string $countryCode = null): array
     {
         $countryMethods = [
             'other' => [
@@ -231,7 +231,7 @@ class Config extends AbstractConfig
      */
     public function getPaymentMarkImageUrl(): string
     {
-        return $this->_assetRepo->getUrl('Payfast_Payfast::images/logo.svg');
+        return $this->_assetRepo->getUrl('Payfast_Payfast::images/payfast-logo.svg');
     }
 
     /**

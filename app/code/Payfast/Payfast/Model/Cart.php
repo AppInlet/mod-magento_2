@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2024 Payfast (Pty) Ltd
+ * Copyright (c) 2025 Payfast (Pty) Ltd
  */
 
 namespace Payfast\Payfast\Model;
@@ -95,7 +95,7 @@ class Cart extends \Magento\Payment\Model\Cart
         $this->_areAmountsValid = false;
 
         $referenceAmount = $this->_salesModel->getDataUsingMethod('base_grand_total');
-        $itemsSubtotal = $this->_calculateItemsSubtotal();
+        $itemsSubtotal   = $this->_calculateItemsSubtotal();
 
         $sum = $itemsSubtotal + $this->getTax();
         $sum = $this->_applyShippingAndDiscounts($sum, $itemsSubtotal);
@@ -122,6 +122,7 @@ class Cart extends \Magento\Payment\Model\Cart
         foreach ($this->getAllItems() as $i) {
             $itemsSubtotal += $i->getQty() * $i->getAmount();
         }
+
         return $itemsSubtotal;
     }
 
@@ -141,13 +142,14 @@ class Cart extends \Magento\Payment\Model\Cart
                 $sum -= $this->getDiscount();
             }
         }
+
         return $sum;
     }
 
     private function _applyDiscount(float $sum, float $itemsSubtotal): float
     {
         if (empty($this->_transferFlags[self::AMOUNT_DISCOUNT])) {
-            $sum -= $this->getDiscount();
+            $sum                    -= $this->getDiscount();
             $this->_areAmountsValid = round($this->getDiscount(), 4) < round($itemsSubtotal, 4);
         } else {
             $this->_areAmountsValid = $itemsSubtotal > 0.00001;

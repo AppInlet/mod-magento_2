@@ -3,7 +3,7 @@
 namespace Payfast\Payfast\Gateway\Request;
 
 /**
- * Copyright (c) 2024 Payfast (Pty) Ltd
+ * Copyright (c) 2025 Payfast (Pty) Ltd
  */
 
 use Exception;
@@ -16,9 +16,6 @@ use Payfast\Payfast\Model\Config;
 use Psr\Log\LoggerInterface;
 use Magento\Framework\App\ProductMetadataInterface;
 
-/**
- * AuthorizationRequest class
- */
 class AuthorizationRequest implements BuilderInterface
 {
 

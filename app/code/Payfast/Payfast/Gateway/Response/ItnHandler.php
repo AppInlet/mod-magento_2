@@ -8,9 +8,6 @@ use Magento\Payment\Gateway\Response\HandlerInterface;
 use Magento\Sales\Model\Order\Payment;
 use UnexpectedValueException;
 
-/**
- * ItnHandler class
- */
 class ItnHandler implements HandlerInterface
 {
     public const TXN_ID = 'TXN_ID';

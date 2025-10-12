@@ -3,16 +3,13 @@
 namespace Payfast\Payfast\Gateway\Http\Client;
 
 /**
- * Copyright (c) 2024 Payfast (Pty) Ltd
+ * Copyright (c) 2025 Payfast (Pty) Ltd
  */
 
 use Magento\Payment\Gateway\Http\ClientInterface;
 use Magento\Payment\Gateway\Http\TransferInterface;
 use Magento\Payment\Model\Method\Logger;
 
-/**
- * ClientMock class
- */
 class ClientMock implements ClientInterface
 {
     public const SUCCESS = 1;

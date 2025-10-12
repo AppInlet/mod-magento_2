@@ -3,7 +3,7 @@
 namespace Payfast\Payfast\Observer;
 
 /**
- * Copyright (c) 2024 Payfast (Pty) Ltd
+ * Copyright (c) 2025 Payfast (Pty) Ltd
  */
 
 use Magento\Framework\Event\Observer;
@@ -13,9 +13,6 @@ use Magento\Sales\Model\Order;
 use Payfast\Payfast\Model\Config;
 use Psr\Log\LoggerInterface as LoggerInterfaceAlias;
 
-/**
- * SalesOrderBeforeSaveObserver class
- */
 class SalesOrderBeforeSaveObserver implements ObserverInterface
 {
     /**

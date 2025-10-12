@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2024 Payfast (Pty) Ltd
+ * Copyright (c) 2025 Payfast (Pty) Ltd
  */
 
 namespace Payfast\Payfast\Helper;
@@ -49,7 +49,7 @@ class Data extends AbstractHelper
 
         $pre = __METHOD__ . ' : ';
 
-        $this->_paymentData  = $paymentData;
+        $this->_paymentData = $paymentData;
 
         parent::__construct($context);
         $this->_logger->debug($pre . 'eof');
@@ -77,7 +77,7 @@ class Data extends AbstractHelper
      *
      * @return MethodInterface[]
      */
-    public function getBillingAgreementMethods(Store|bool|int|string $store = null, Quote $quote = null): array
+    public function getBillingAgreementMethods(Store|bool|int|string|null $store = null, ?Quote $quote = null): array
     {
         $pre = __METHOD__ . ' : ';
         $this->_logger->debug($pre . 'bof');

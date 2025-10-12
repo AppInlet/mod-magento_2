@@ -1,8 +1,8 @@
-# mod-magento_2
+# magento-aggregation
 
-## Payfast module v2.6.0 for Magento v2.4.7
+## Payfast Aggregation module v2.7.0 for Magento v2.4.8
 
-This is the Payfast module for Magento 2. Please feel free
+This is the Payfast Aggregation module for Magento 2. Please feel free
 to [contact the Payfast support team](https://payfast.io/contact/) should you require any assistance.
 
 ## Installation
@@ -14,7 +14,7 @@ to [contact the Payfast support team](https://payfast.io/contact/) should you re
 3. You will now need to run the following commands in the given order:
 
 ```
-composer require payfast/payfast-common:v1.1.0
+composer require payfast/payfast-common:v1.4.0
 php ./bin/magento module:enable Payfast_Payfast
 php ./bin/magento setup:di:compile
 php ./bin/magento setup:static-content:deploy

@@ -3,18 +3,15 @@
 namespace Payfast\Payfast\Logger;
 
 use Magento\Framework\Logger\Handler\Base;
-use Monolog\Logger;
+use Psr\Log\LogLevel;
 
-/**
- * Handler class
- */
 class Handler extends Base
 {
     /**
      * Logging level
      * @var int
      */
-    protected $loggerType = Logger::INFO;
+    protected $loggerType = LogLevel::INFO;
 
     /**
      * File name

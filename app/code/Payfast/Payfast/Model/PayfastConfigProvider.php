@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2024 Payfast (Pty) Ltd
+ * Copyright (c) 2025 Payfast (Pty) Ltd
  */
 
 namespace Payfast\Payfast\Model;
@@ -14,9 +14,6 @@ use Magento\Payment\Model\MethodInterface;
 use Payfast\Payfast\Helper\Data as PayfastHelper;
 use Psr\Log\LoggerInterface;
 
-/**
- * PayfastConfigProvider class
- */
 class PayfastConfigProvider implements ConfigProviderInterface
 {
     /**
