@@ -1,18 +1,27 @@
 # Changelog
 
-## [[2.6.0]](https://github.com/Payfast/mod-magento_2/releases/tag/v2.6.0)
+## [[2.7.0]](https://github.com/Payfast/magento-aggregation/releases/tag/v2.7.0)
+
+### Added
+
+- Added support for Magento 2.4.8+ and PHP 8.4.
+- Updated Common Library to version 1.4.0.
+- Updated branding to use the Payfast by Network logo.
+- Revised configuration branding to Payfast Aggregation.
+
+## [[2.6.0]](https://github.com/Payfast/magento-aggregation/releases/tag/v2.6.0)
 
 ### Added
 
 - Update for Magento 2.4.7+ and PHP 8.2.
 
-## [[2.5.1]](https://github.com/Payfast/mod-magento_2/releases/tag/v2.5.1)
+## [[2.5.1]](https://github.com/Payfast/magento-aggregation/releases/tag/v2.5.1)
 
 ### Fixed
 
 - Dynamic creation of properties error (php 8.2+).
 
-## [[2.5.0]](https://github.com/Payfast/mod-magento_2/releases/tag/v2.5.0)
+## [[2.5.0]](https://github.com/Payfast/magento-aggregation/releases/tag/v2.5.0)
 
 ### Added
 
@@ -23,7 +32,7 @@
 
 - Bug fixes and code quality improvements.
 
-## [[2.4.1]](https://github.com/Payfast/mod-magento_2/releases/tag/v2.4.1)
+## [[2.4.1]](https://github.com/Payfast/magento-aggregation/releases/tag/v2.4.1)
 
 ### Added
 
@@ -43,7 +52,7 @@
 
 - Update branding.
 
-## [[2.4.0]](https://github.com/Payfast/mod-magento_2/releases/tag/v2.4.0)
+## [[2.4.0]](https://github.com/Payfast/magento-aggregation/releases/tag/v2.4.0)
 
 ### Added
 

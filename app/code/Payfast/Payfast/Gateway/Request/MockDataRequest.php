@@ -3,7 +3,7 @@
 namespace Payfast\Payfast\Gateway\Request;
 
 /**
- * Copyright (c) 2024 Payfast (Pty) Ltd
+ * Copyright (c) 2025 Payfast (Pty) Ltd
  */
 
 use InvalidArgumentException;
@@ -11,9 +11,6 @@ use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 use Payfast\Payfast\Gateway\Http\Client\ClientMock;
 
-/**
- * MockDataRequest class
- */
 class MockDataRequest implements BuilderInterface
 {
     public const FORCE_RESULT = 'FORCE_RESULT';

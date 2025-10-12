@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2024 Payfast (Pty) Ltd
+ * Copyright (c) 2025 Payfast (Pty) Ltd
  */
 
 namespace Payfast\Payfast\Model;
@@ -200,7 +200,7 @@ abstract class AbstractConfig extends \Magento\Payment\Gateway\Config\Config imp
      *
      * @return bool
      */
-    public function isMethodAvailable(string $methodCode = null): bool
+    public function isMethodAvailable(?string $methodCode = null): bool
     {
         $methodCode = $methodCode ?: $this->_methodCode;
 
@@ -246,7 +246,7 @@ abstract class AbstractConfig extends \Magento\Payment\Gateway\Config\Config imp
      * @return bool
      *
      */
-    public function isMethodSupportedForCountry(string $method = null, string $countryCode = null): bool
+    public function isMethodSupportedForCountry(?string $method = null, ?string $countryCode = null): bool
     {
         return true;
     }

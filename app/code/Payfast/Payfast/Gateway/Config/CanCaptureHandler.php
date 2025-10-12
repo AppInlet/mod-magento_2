@@ -3,16 +3,13 @@
 namespace Payfast\Payfast\Gateway\Config;
 
 /**
- * Copyright (c) 2024 Payfast (Pty) Ltd
+ * Copyright (c) 2025 Payfast (Pty) Ltd
  */
 
 use Magento\Payment\Gateway\Config\ValueHandlerInterface;
 use Magento\Payment\Gateway\Helper\SubjectReader;
 use Magento\Sales\Model\Order\Payment;
 
-/**
- * CanCaptureHandler class
- */
 class CanCaptureHandler implements ValueHandlerInterface
 {
     /**

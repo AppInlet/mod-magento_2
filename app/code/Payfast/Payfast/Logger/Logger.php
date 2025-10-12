@@ -8,9 +8,6 @@ use Payfast\Payfast\Model\Config;
 use Payfast\Payfast\Model\ConfigFactory;
 use Throwable;
 
-/**
- * Logger class
- */
 class Logger extends \Monolog\Logger
 {
     /**
@@ -76,4 +73,3 @@ class Logger extends \Monolog\Logger
         return $this->config->getValue('debug');
     }
 }
-

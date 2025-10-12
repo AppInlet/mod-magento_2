@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2024 Payfast (Pty) Ltd
+ * Copyright (c) 2025 Payfast (Pty) Ltd
  */
 
 namespace Payfast\Payfast\Block;
@@ -13,9 +13,6 @@ use Payfast\Payfast\Model\Config;
 use Payfast\Payfast\Model\ConfigFactory;
 use Payfast\Payfast\Model\PayfastConfigProvider;
 
-/**
- * Form class
- */
 class Form extends \Magento\Payment\Block\Form
 {
     /**

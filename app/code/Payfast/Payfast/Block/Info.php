@@ -5,9 +5,6 @@ namespace Payfast\Payfast\Block;
 use Magento\Framework\Phrase;
 use Magento\Payment\Block\ConfigurableInfo;
 
-/**
- * Info class
- */
 class Info extends ConfigurableInfo
 {
     /**

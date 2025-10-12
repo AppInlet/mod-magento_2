@@ -3,7 +3,7 @@
 namespace Payfast\Payfast\Gateway\Validator;
 
 /**
- * Copyright (c) 2024 Payfast (Pty) Ltd
+ * Copyright (c) 2025 Payfast (Pty) Ltd
  */
 
 use InvalidArgumentException;
@@ -13,9 +13,6 @@ use Magento\Payment\Gateway\Validator\ResultInterfaceFactory;
 use Payfast\Payfast\Gateway\Http\Client\ClientMock;
 use Psr\Log\LoggerInterface;
 
-/**
- * ResponseCodeValidator class
- */
 class ResponseCodeValidator extends AbstractValidator
 {
     public const RESULT_CODE = 'RESULT_CODE';

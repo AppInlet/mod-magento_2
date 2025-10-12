@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright (c) 2024 Payfast (Pty) Ltd
+ * Copyright (c) 2025 Payfast (Pty) Ltd
  */
 
 namespace Payfast\Payfast\Model;
@@ -199,7 +199,7 @@ class Payfast
      *
      * @return bool
      */
-    public function isAvailable(CartInterface $quote = null): bool
+    public function isAvailable(?CartInterface $quote = null): bool
     {
         return $this->_config->isMethodAvailable();
     }
@@ -207,9 +207,9 @@ class Payfast
     /**
      * This where we compile data posted by the form to payfast
      *
+     * @return array
      * @var Order $order
      *
-     * @return array
      */
     public function getStandardCheckoutFormFields(): array
     {
@@ -449,6 +449,7 @@ class Payfast
             );
         } catch (InputException $e) {
             $this->payfastLogger->error($e->getMessage());
+
             return false;
         }
     }

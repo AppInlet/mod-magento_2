@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2024 Payfast (Pty) Ltd
+ * Copyright (c) 2025 Payfast (Pty) Ltd
  */
 
 namespace Payfast\Payfast\Block\Payment;
@@ -14,9 +14,6 @@ use Magento\Sales\Model\OrderFactory;
 use Payfast\Payfast\Helper\Data;
 use Payfast\Payfast\Model\Payfast;
 
-/**
- * Request class
- */
 class Request extends Template
 {
 
@@ -71,9 +68,9 @@ class Request extends Template
         $this->_orderFactory    = $orderFactory;
         $this->_checkoutSession = $checkoutSession;
         parent::__construct($context, $data);
-        $this->readFactory     = $readFactory;
-        $this->reader          = $reader;
-        $this->_paymentMethod  = $paymentMethod;
+        $this->readFactory    = $readFactory;
+        $this->reader         = $reader;
+        $this->_paymentMethod = $paymentMethod;
     }
 
     /**

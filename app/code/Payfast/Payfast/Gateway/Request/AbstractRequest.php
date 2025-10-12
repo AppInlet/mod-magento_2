@@ -57,8 +57,8 @@ abstract class AbstractRequest implements BuilderInterface
         }
 
         $paymentDO = $buildSubject['payment'];
-        $order = $paymentDO->getOrder();
-        $payment = $paymentDO->getPayment();
+        $order     = $paymentDO->getOrder();
+        $payment   = $paymentDO->getPayment();
 
         if (!$payment instanceof OrderPaymentInterface) {
             throw new LogicException('Order payment should be provided.');

@@ -1,18 +1,12 @@
 <?xml version="1.0"?>
-<!--
-/**
- * Copyright (c) 2024 Payfast (Pty) Ltd
- * You (being anyone who is not Payfast (Pty) Ltd) may download and use this plugin / code in your own website in conjunction with a registered and active Payfast account. If your Payfast account is terminated for any reason, you may not use this plugin / code or part thereof.
- * Except as expressly indicated in this licence, you may not use, copy, modify or distribute this plugin / code or part thereof in any way.
- */
--->
+
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
         <section id="payment">
             <group id="payfast" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1"
                    showInStore="1">
-                <label>Payfast</label>
+                <label>Payfast Aggregation</label>
                 <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1"
                        showInStore="0">
                     <label>Enabled</label>
@@ -25,7 +19,7 @@
                 </field>
                 <field id="debug" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1"
                        showInStore="0">
-                    <label>Enable Payfast Debug Log</label>
+                    <label>Enable Debug Log</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment>Log request data to payfast.log, should be set to "No" when site is live</comment>
                 </field>
@@ -59,7 +53,9 @@
                 <field id="passphrase" translate="label" type="text" sortOrder="37" showInDefault="1" showInWebsite="1"
                        showInStore="0">
                     <label>Passphrase</label>
-                    <comment>If passphrase set, ensure the identical passphrase is set on your Payfast account</comment>
+                    <comment>If passphrase set, ensure the identical passphrase is set on your Payfast Aggregation
+                        account
+                    </comment>
                 </field>
                 <field id="merchant_id" translate="label" type="text" sortOrder="35" showInDefault="1" showInWebsite="1"
                        showInStore="0">
