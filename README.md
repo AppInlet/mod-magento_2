@@ -7,24 +7,41 @@ to [contact the Payfast support team](https://payfast.io/contact/) should you re
 
 ## Installation
 
-1. Setup **ZAR** on your Magento site.
-   In the admin panel navigate to **Stores**, and add **ZAR** under Currency Symbols and Rates.
-2. Copy the Payfast app folder to your root Magento folder.
-   This will not override any files on your system.
-3. You will now need to run the following commands in the given order:
+1. **Download the Plugin**
 
-```
-composer require payfast/payfast-common:v1.4.0
-php ./bin/magento module:enable Payfast_Payfast
-php ./bin/magento setup:di:compile
-php ./bin/magento setup:static-content:deploy
-php ./bin/magento cache:clean
-```
+    - **Option 1: Automatic Installation**
+        - Install the module using the following composer command:
+        ```console
+        composer require payfast/payfast
+        ```
+    - **Option 2: Manual Installation**
+        - Visit the [releases page](https://github.com/Payfast/magento-aggregation/releases) and
+          download [Payfast.zip](https://github.com/Payfast/magento-aggregation/releases/download/v2.7.0/Payfast.zip).
+        - Extract the contents of `Payfast.zip`, then upload the newly created **Payfast** directory into your Magento
+          app/code directory (e.g. magentorootfolder/app/code/).
+        - Run the following composer command:
+         ```console
+         composer require payfast/payfast-common:v1.4.0
+         ```
 
-4. Log into the admin panel and navigate to **Stores** -> **Configuration** -> **Sales** -> **Payment Method** and click
-   on **Payfast**.
-5. Enable the module and complete the Payfast settings as required.
-6. Click **Save Config**.
+2. **Install the Plugin**
+
+    - Run the following Magento CLI commands:
+      ```console
+      php bin/magento module:enable Payfast_Payfast
+      php bin/magento setup:upgrade
+      php bin/magento setup:di:compile
+      php bin/magento setup:static-content:deploy
+      php bin/magento indexer:reindex
+      php bin/magento cache:clean
+      ```
+3. **Configure the Plugin**
+
+    - Login to the Magento admin panel.
+    - Navigate to **Stores > Configuration > Sales > Payment Methods** and click on
+      **Payfast**.
+    - Configure the module according to your needs, then click the **Save Config** button.
+    - Navigate to **Stores**, and add **ZAR** under Currency Symbols and Rates.
 
 Please [click here](https://payfast.io/integration/plugins/magento/) for more information concerning this
 module.
@@ -32,3 +49,8 @@ module.
 ## Collaboration
 
 Please submit pull requests with any tweaks, features or fixes you would like to share.
+
+
+
+
+
